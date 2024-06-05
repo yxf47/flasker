@@ -20,8 +20,7 @@ services:
     environment:
       MYSQL_DATABASE: our_users
       MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password123
     ports:
       - "3306:3306"
     volumes:
@@ -35,7 +34,7 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password123
     depends_on:
       - db
 
