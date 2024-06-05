@@ -24,7 +24,8 @@ ckeditor = CKEditor(app)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://udav7f289ske1h:pf132b76df6356e1e744b88cf56f8a5e9e57e464de21548c8073803288ccf3a8d@cd5vlri6nnqe17.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d2gs7cosuafj1s'
 db_uri = os.getenv('DATABASE_URI', 'sqlite:///default.db')
 # new mySQL dB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password123@localhost/our_users'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password123@db/our_users'
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 # secret key
 app.config['SECRET_KEY'] = "my super secret key"
 # DB initialization
