@@ -7,23 +7,37 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - DATABASE_URI=mysql+pymysql://root:password123@db/our_users
+      - DATABASE_URI=mysql+pymysql://root:password@db/our_users
     depends_on:
       - db
+    volumes:
+      - .:/app  # Ensure Flask app code is available in the container
 
   db:
     image: mysql:8.0
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_DATABASE: yourdatabase
-      MYSQL_USER: user
+      MYSQL_DATABASE: our_users
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: password
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: password
+    depends_on:
+      - db
 
 volumes:
   db_data:
