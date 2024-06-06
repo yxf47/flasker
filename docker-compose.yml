@@ -7,7 +7,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - DATABASE_URI=mysql+pymysql://root:password@db/our_users
+      - DATABASE_URI=mysql+pymysql://root:password123@db/our_users
     depends_on:
       - db
     volumes:
