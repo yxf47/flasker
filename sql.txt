@@ -1,0 +1,23 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT NOT NULL,
+    username VARCHAR(20) NOT NULL UNIQUE,
+    name VARCHAR(200) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    favourite_color VARCHAR(120),
+    about_author TEXT,
+    date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
+    profile_pic VARCHAR(120),
+    password_hash VARCHAR(120),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE posts (
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(255),
+    content TEXT,
+    date_posted DATETIME DEFAULT CURRENT_TIMESTAMP,
+    slug VARCHAR(255),
+    poster_id INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (poster_id) REFERENCES users (id)
+);
